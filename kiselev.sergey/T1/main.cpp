@@ -34,18 +34,12 @@ int main()
         isIncorrectShape = true;
         continue;
       }
-      try
-      {
-        compShp.pushBack(shape);
-      }
-      catch (const std::bad_alloc&)
-      {
-        delete shape;
-        std::cerr << "Out of memory";
-      }
+      compShp.pushBack(shape);
+      shape = nullptr;
     }
     catch (const std::exception& e)
     {
+      delete shape;
       std::cerr << e.what() << "\n";
       return 1;
     }
